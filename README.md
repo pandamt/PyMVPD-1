@@ -3,11 +3,11 @@
 PyMVPD: MultiVariate Pattern Dependence in Python
 
 ## MVPD Model Family
-### Linear Regression Model
+*### Linear Regression Model
 1. L2_LR:
 2. PCA_LR:
 
-### Neural Network Model
+*### Neural Network Model
 1. NN_1layer:
 2. NN_5layer:
 3. NN_5layer_dense:
