@@ -3,14 +3,14 @@
 PyMVPD: MultiVariate Pattern Dependence in Python
 
 ## MVPD Model Family
-* Linear Regression Model
-1. L2_LR:
-2. PCA_LR:
+1. Linear Regression Models
+* L2_LR:
+* PCA_LR:
 
-* Neural Network Model
-1. NN_1layer:
-2. NN_5layer:
-3. NN_5layer_dense:
+2. Neural Network Models
+* NN_1layer:
+* NN_5layer:
+* NN_5layer_dense:
 
 ##  Example Dataset
 Data from sub-01 in [_StudyForrest_](http://studyforrest.org): FFA - fusiform face area, PPA - parahippocampal place area, GM - grey matter
