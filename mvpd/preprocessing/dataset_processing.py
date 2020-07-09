@@ -1,3 +1,6 @@
+"""
+Preprocess functional data with ROI masks.
+"""
 import numpy as np
 import nibabel as nib
 

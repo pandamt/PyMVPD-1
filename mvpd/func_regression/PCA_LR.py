@@ -1,5 +1,5 @@
 """
-MVPD Regression Model Family
+MVPD - Linear Regression Model + Principal Component Analysis (PCA)
 """
 import sklearn
 from sklearn.decomposition import PCA

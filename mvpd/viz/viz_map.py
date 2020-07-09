@@ -1,10 +1,9 @@
 """
-MVPD base processing workflows
+Visualization.
 """
 import numpy as np
 import nibabel as nib
 
-# Visualization
 def cmetric_to_map(filepath_map, c_metric):
     """
     Project connectivity metric to brain map.

@@ -1,8 +1,7 @@
 """
-MVPD Regression Model Family
+MVPD - Linear Regression Model + L2 Regularization 
 """
 import sklearn
-from sklearn.decomposition import PCA
 from sklearn import linear_model
 
 def L2_LR(ROI_1_train, ROI_2_train, ROI_1_test, ROI_2_test, alpha):
