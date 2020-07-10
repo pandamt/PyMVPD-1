@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "/gsfs0/data/fangmg/PyMVPD/mvpd/model_settings.py"
+source "/gsfs0/data/username/PyMVPD/mvpd/model_settings.py"
 
 sed -i -e 's/MODENAME/'$mode'/g' runMVPD.pbs
 
