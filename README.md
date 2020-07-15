@@ -29,5 +29,3 @@ sh runMVPD.sh
 
 ## Contact
 Reach out to mtfang0707@gmail.com for questions, suggestions and feedback.
-
-
