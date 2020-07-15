@@ -32,4 +32,7 @@ In no event shall PyMVPD be liable for any direct, indirect, incidental, speical
 
 ## License
 
+## Contact
+Reach out to [_mtfang0707@gmail.com_](mtfang0707@gmail.com) for questions, suggestions and feedback.
+
 
