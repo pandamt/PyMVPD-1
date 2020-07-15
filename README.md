@@ -16,7 +16,7 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 ### Example Dataset
 Data of one subject from the [_StudyForrest_](http://studyforrest.org) dataset: FFA - fusiform face area, PPA - parahippocampal place area, GM - grey matter.
 
-Note: Raw data were first preprocessed using [fMRIPrep](https://fmriprep.readthedocs.io/en/latest/index.html) and then denoised by using CompCor (see more details in [Fang et al. 2019](https://doi.org/10.31234/osf.io/qbx4m)).
+* Raw data were first preprocessed using [fMRIPrep](https://fmriprep.readthedocs.io/en/latest/index.html) and then denoised by using CompCor (see more details in [Fang et al. 2019](https://doi.org/10.31234/osf.io/qbx4m)).
 
 ### Example Analyses and Scripts
 1. Choose one MVPD model, set model parameters, input functional data and ROI masks, set output directory in [model_settings.py](mvpd/model_settings.py);
