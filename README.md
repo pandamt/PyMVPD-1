@@ -25,6 +25,10 @@ python3 data_prep.py
 ```
 sh runMVPD.sh
 ```
+
+## Limitations of Liability
+In no event shall PyMVPD be liable for any direct, indirect, incidental, speical or consequential damages for loss of profits, revenue, data or data use, incurred by you or any third party, whether in an action in contract or tort, arising from your access to, or use of, the Python package or any content provided on or through the package.
+
      
 
 
