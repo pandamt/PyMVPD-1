@@ -12,10 +12,11 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 * NN_5layer: 5-Layer fully-connected linear neural network model
 * NN_5layer_dense: 5-Layer fully-connected linear neural network model with dense connections
 
-##  Example Dataset
+## Usage
+### Example Dataset
 Data from sub-01 in [_StudyForrest_](http://studyforrest.org): FFA - fusiform face area, PPA - parahippocampal place area, GM - grey matter
 
-##  Example Analyses and Scripts
+### Example Analyses and Scripts
 1. Choose one MVPD model, set model parameters, input functional data and ROI masks, set output directory in [model_settings.py](mvpd/model_settings.py);
 2. Run [data_prep.py](mvpd/data_prep.py) to preprocess functional data;
 ```
