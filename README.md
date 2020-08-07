@@ -14,7 +14,6 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 
 ## Workflow
 ![GitHub Logo](/workflow.png)
-Format: ![Alt Text](url)
 
 ## Usage
 ### Example Dataset
