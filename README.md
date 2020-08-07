@@ -12,6 +12,8 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 * NN_5layer: 5-Layer fully-connected linear neural network model
 * NN_5layer_dense: 5-Layer fully-connected linear neural network model with dense connections
 
+## Workflow
+
 ## Usage
 ### Example Dataset
 Data of one subject from the [_StudyForrest_](http://studyforrest.org) dataset: FFA - fusiform face area, GM - grey matter.
