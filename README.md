@@ -13,6 +13,8 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 * NN_5layer_dense: 5-Layer fully-connected linear neural network model with dense connections
 
 ## Workflow
+![GitHub Logo](/workflow.png)
+Format: ![Alt Text](url)
 
 ## Usage
 ### Example Dataset
