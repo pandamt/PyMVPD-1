@@ -14,7 +14,7 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 
 ## Workflow
 ![GitHub Logo](/workflow.png | width=100)
-<img src="https://github.com/pandamt/PyMVPD/workflow.png" width="48">
+<img src="/workflow.png" alt="Your image title" width="250"/>
 
 ## Usage
 ### Example Dataset
