@@ -1,10 +1,10 @@
 #!/bin/bash
 
-source "/gsfs0/data/fangmg/PyMVPD/mvpd/model_settings.py"
+source "/gsfs0/data/fangmg/PyMVPD/mvpd/analysis_spec.py"
 
 case $mode in
 "NN_1layer")
-   echo "MVPD - 1-layer Neural Network"
+   echo "MVPD - 1-layer Neural Network"  
    python3 MVPD_neural_net.py $test_run
    ;;
 "NN_5layer")

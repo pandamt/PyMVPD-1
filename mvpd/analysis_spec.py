@@ -1,5 +1,6 @@
-# MVPD Model 
-mode='NN_1layer' # ['PCA_LR', 'L2_LR', 'NN_1layer', 'NN_5layer', 'NN_5layer_dense']
+"""
+Analysis Specification
+""" 
 
 sub='sub-01'
 total_run=8
@@ -21,7 +22,8 @@ filepath_mask2='/gsfs0/data/fangmg/PyMVPD/mvpd/example_data/GM_thr0.1_bin.nii.gz
 roi_save_dir = '/gsfs0/data/fangmg/PyMVPD/mvpd/example_data/roi_data/'
 model_save_dir='/gsfs0/data/fangmg/PyMVPD/mvpd/test/'
 
-# Modeling
+# MVPD Modeling
+mode='NN_1layer' # ['PCA_LR', 'L2_LR', 'NN_1layer', 'NN_5layer', 'NN_5layer_dense']
 # PCA + Linear Regression
 num_pc=3 # number of principal component used
 
