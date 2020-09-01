@@ -22,14 +22,14 @@ Data of one subject from the [_StudyForrest_](http://studyforrest.org) dataset: 
 * Raw data were first preprocessed using [fMRIPrep](https://fmriprep.readthedocs.io/en/latest/index.html) and then denoised by using CompCor (see more details in [Fang et al. 2019](https://doi.org/10.31234/osf.io/qbx4m)).
 
 ### Example Analyses and Scripts
-1. Choose one MVPD model, set model parameters, input functional data and ROI masks, set output directory in [model_settings.py](mvpd/model_settings.py);
-2. Run [data_prep.py](mvpd/data_prep.py) to preprocess functional data;
+1. Choose one MVPD model, set model parameters, input functional data and ROI masks, set output directory in [analysis_spec.py](mvpd/analysis_spec.py);
+2. Run [data_loading.py](mvpd/data_loading.py) to preprocess functional data;
 ```
 python3 data_prep.py
 ```
 3. Run MVPD model: 
 ```
-sh runMVPD.sh
+sh analysis_exec.sh
 ```
 
 ## Contact
