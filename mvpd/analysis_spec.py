@@ -1,7 +1,7 @@
 # Subject/Participant
 sub='sub-01'
 # Total number of experimental runs
-total_run=3
+total_run=8
 # Left-out run for testing
 test_run=1
 
@@ -41,9 +41,9 @@ alpha=0.01 # regularization strength
 input_size=80
 output_size=53539
 hidden_size=100 # number of units per hidden layer
-num_epochs=50 # number of epochs for training
-save_freq=10 # checkpoint saving frequency
-print_freq=10 # print out frequency
+num_epochs=5000 # number of epochs for training
+save_freq=1000 # checkpoint saving frequency
+print_freq=100 # print out frequency
 batch_size=32 
 learning_rate=1e-3
 momentum_factor=0.9  
