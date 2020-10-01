@@ -13,10 +13,10 @@ from torch.autograd import Variable
 from dataloader.loader_neural_net import ROI_Dataset
 from evaluation import var_expl
 from viz import viz_map
-from model_settings import mode, input_size, output_size, hidden_size, total_run, sub, num_epochs, save_freq, print_freq, batch_size, learning_rate, momentum_factor, w_decay, model_save_dir, filepath_func, filepath_mask1, filepath_mask2
+from analysis_spec import model_type, input_size, output_size, hidden_size, total_run, sub, num_epochs, save_freq, print_freq, batch_size, learning_rate, momentum_factor, w_decay, results_save_dir, filepath_func, filepath_mask1, filepath_mask2
 
-NN_module = importlib.import_module('func_neural_net.%s'%(mode))
-NN_model = getattr(NN_module, mode)
+NN_module = importlib.import_module('func_neural_net.%s'%(model_type))
+NN_model = getattr(NN_module, model_type)
 
 sys.argv = [sys.argv[0], sys.argv[1]]
 this_run = int(sys.argv[1])
@@ -26,13 +26,13 @@ print("this_run:", this_run)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # create output folder if not exists
-if not os.path.exists(model_save_dir):
-       os.mkdir(model_save_dir)
+if not os.path.exists(results_save_dir):
+       os.mkdir(results_save_dir)
 
-model_save_dir_run = model_save_dir + sub + '_' + mode + '_testrun' + str(this_run) + '/'
+results_save_dir_run = results_save_dir + sub + '_' + model_type + '_testrun' + str(this_run) + '/'
 
-if not os.path.exists(model_save_dir_run):
-       os.mkdir(model_save_dir_run)
+if not os.path.exists(results_save_dir_run):
+       os.mkdir(results_save_dir_run)
 
 def save_model(net, optim, epoch, ckpt_fname):
     state_dict = net.state_dict()
@@ -44,7 +44,7 @@ def save_model(net, optim, epoch, ckpt_fname):
         'optimizer': optim},
         ckpt_fname)
 
-def NN_train(net, trainloader, criterion, optimizer, epoch, print_freq, save_freq, model_save_dir):
+def NN_train(net, trainloader, criterion, optimizer, epoch, print_freq, save_freq, results_save_dir):
     net.train()
     running_loss = 0.0
     for i, data in enumerate(trainloader):
@@ -73,10 +73,10 @@ def NN_train(net, trainloader, criterion, optimizer, epoch, print_freq, save_fre
             running_loss = 0.0
 
     if epoch % save_freq == 0:
-        save_model(net, optimizer, epoch, os.path.join(model_save_dir, 'MVPD_'+mode+'_%03d.ckpt' % epoch))
-        print("Model saved in file: " + model_save_dir + "MVPD_"+mode+"_%03d.ckpt" % epoch)
+        save_model(net, optimizer, epoch, os.path.join(results_save_dir, 'MVPD_'+model_type+'_%03d.ckpt' % epoch))
+        print("Model saved in file: " + results_save_dir + "MVPD_"+model_type+"_%03d.ckpt" % epoch)
 
-def NN_test(net, output_size, testloader, epoch, model_save_dir):
+def NN_test(net, output_size, testloader, epoch, results_save_dir):
     net.eval()
     score = []
     ROI_2_pred = []
@@ -125,18 +125,18 @@ if __name__ == "__main__":
     optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum_factor, weight_decay=w_decay)
 
     for epoch in range(num_epochs+1):  # loop over the dataset multiple times
-        NN_train(net, trainloader, criterion, optimizer, epoch, print_freq, save_freq, model_save_dir_run)
+        NN_train(net, trainloader, criterion, optimizer, epoch, print_freq, save_freq, results_save_dir_run)
         if (epoch != 0) & (epoch % save_freq == 0):
-            err_NN, ROI_2_test = NN_test(net, output_size, testloader, epoch, model_save_dir_run)
+            err_NN, ROI_2_test = NN_test(net, output_size, testloader, epoch, results_save_dir_run)
             # Evaluation: variance explained
-            var_expl = var_expl.eval_var_expl(err_NN, ROI_2_test)
-            print("max_vari:", max(var_expl))
+            var_expl_data = var_expl.eval_var_expl(err_NN, ROI_2_test)
+            print("max_vari:", max(var_expl_data))
             # save variance to file 
-            np.save(model_save_dir_run+sub+'_var_expl_'+mode+'_testrun'+str(this_run)+'_%depochs.npy' % epoch, var_expl)
+            np.save(results_save_dir_run+sub+'_var_expl_'+model_type+'_testrun'+str(this_run)+'_%depochs.npy' % epoch, var_expl_data)
 
             # Visualization
-            var_expl_map, var_expl_img = viz_map.cmetric_to_map(filepath_mask2, var_expl)
-            np.save(model_save_dir_run+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'_%depochs.npy' % epoch, var_expl_map)
-            nib.save(var_expl_img, model_save_dir_run+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'_%depochs.nii.gz' % epoch)
+            var_expl_map, var_expl_img = viz_map.cmetric_to_map(filepath_mask2, var_expl_data)
+            np.save(results_save_dir_run+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'_%depochs.npy' % epoch, var_expl_map)
+            nib.save(var_expl_img, results_save_dir_run+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'_%depochs.nii.gz' % epoch)
 
 

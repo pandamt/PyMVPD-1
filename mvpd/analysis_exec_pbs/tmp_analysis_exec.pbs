@@ -1,13 +1,13 @@
 #!/bin/tcsh
 
 #PBS -l mem=20gb,walltime=12:00:00,advres=gpgpu2
-#PBS -o /gsfs0/data/username/PyMVPD/mvpd/runMVPD_pbs/pbs_output/output.$PBS_JOBID 
-#PBS -e /gsfs0/data/username/PyMVPD/mvpd/runMVPD_pbs/pbs_output/error.$PBS_JOBID
+#PBS -o /path/to/your/folder/PyMVPD/mvpd/runMVPD_pbs/pbs_output/output.$PBS_JOBID 
+#PBS -e /path/to/your/folder/PyMVPD/mvpd/runMVPD_pbs/pbs_output/error.$PBS_JOBID
 
 module load anaconda/4.4.0-P3.6
 module load cuda90/toolkit/9.0.176
 module load pytorch/0.4.1
 
-cd /gsfs0/data/username/PyMVPD/mvpd
+cd /path/to/your/folder/PyMVPD/mvpd
 
 python3 MVPD_neural_net.py ChangeThisRun

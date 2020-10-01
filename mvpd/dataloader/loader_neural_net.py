@@ -8,7 +8,7 @@ import itertools as it
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from model_settings import sub, roi_save_dir, roi_1_name, roi_2_name, filepath_func, filepath_mask1, filepath_mask2
+from analysis_spec import sub, roidata_save_dir, roi_1_name, roi_2_name, filepath_func, filepath_mask1, filepath_mask2
 
 # Implement the data loader.
 class ROI_Dataset(Dataset):
@@ -21,9 +21,9 @@ class ROI_Dataset(Dataset):
     def get_train(self, this_run=0, total_run=0):
         NULL = True # dataset is empty
         for run in it.chain(range(1,this_run), range(this_run+1,total_run+1)):
-                roi_save_dir_run = roi_save_dir+'roi_run_'+str(run)+'/'
-                roi_1_data_run = np.load(roi_save_dir_run+roi_1_name+'_data_run_'+str(run)+'.npy')
-                roi_2_data_run = np.load(roi_save_dir_run+roi_2_name+'_data_run_'+str(run)+'.npy')                
+                roidata_save_dir_run = roidata_save_dir+'roi_run_'+str(run)+'/'
+                roi_1_data_run = np.load(roidata_save_dir_run+roi_1_name+'_data_run_'+str(run)+'.npy')
+                roi_2_data_run = np.load(roidata_save_dir_run+roi_2_name+'_data_run_'+str(run)+'.npy')                
                
                 # Concatenate data from each run for training
                 if NULL:
@@ -46,9 +46,9 @@ class ROI_Dataset(Dataset):
         self.ROIs_2 = self.ROIs_2.type(torch.FloatTensor)
       
     def get_test(self, this_run=0, total_run=0): 
-        roi_save_dir_run = roi_save_dir+'roi_run_'+str(this_run)+'/'
-        roi_1_data = np.load(roi_save_dir_run+roi_1_name+'_data_run_'+str(this_run)+'.npy')
-        roi_2_data = np.load(roi_save_dir_run+roi_2_name+'_data_run_'+str(this_run)+'.npy')
+        roidata_save_dir_run = roidata_save_dir+'roi_run_'+str(this_run)+'/'
+        roi_1_data = np.load(roidata_save_dir_run+roi_1_name+'_data_run_'+str(this_run)+'.npy')
+        roi_2_data = np.load(roidata_save_dir_run+roi_2_name+'_data_run_'+str(this_run)+'.npy')
  
         'Convert ndarrays in sample to Tensors'
         self.ROIs_1 = torch.from_numpy(roi_1_data)

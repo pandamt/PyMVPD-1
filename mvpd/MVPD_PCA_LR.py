@@ -8,15 +8,15 @@ from dimension_reduction import DR_PCA
 from func_regression.PCA_LR import PCA_LR
 from evaluation import var_expl
 from viz import viz_map
-from model_settings import mode, sub, total_run, num_pc, filepath_func, filepath_mask1, filepath_mask2, model_save_dir
+from analysis_spec import model_type, sub, total_run, num_pc, filepath_func, filepath_mask1, filepath_mask2, results_save_dir
 
 sys.argv = [sys.argv[0], sys.argv[1]]
 this_run = int(sys.argv[1])
 print("this_run:", this_run)
 
 # create output folder if not exists
-if not os.path.exists(model_save_dir):
-       os.mkdir(model_save_dir)
+if not os.path.exists(results_save_dir):
+       os.mkdir(results_save_dir)
 
 if __name__ == "__main__":
     # Load functioanl data and ROI masks
@@ -40,12 +40,12 @@ if __name__ == "__main__":
     # Evaluation: variance explained
     var_expl = var_expl.eval_var_expl(err_LR, ROI_2_test)
     # save variance to file 
-    np.save(model_save_dir+sub+'_var_expl_'+mode+'_testrun'+str(this_run)+'.npy', var_expl)
+    np.save(results_save_dir+sub+'_var_expl_'+model_type+'_testrun'+str(this_run)+'.npy', var_expl)
 
     # Visualization
     var_expl_map, var_expl_img = viz_map.cmetric_to_map(filepath_mask2, var_expl)
-    np.save(model_save_dir+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'.npy', var_expl_map)
-    nib.save(var_expl_img, model_save_dir+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'.nii.gz')
+    np.save(results_save_dir+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'.npy', var_expl_map)
+    nib.save(var_expl_img, results_save_dir+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'.nii.gz')
 
 
 

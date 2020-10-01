@@ -5,7 +5,7 @@ import sys
 sys.path.append("..")
 import numpy as np
 import itertools as it
-from model_settings import sub, roi_save_dir, roi_1_name, roi_2_name, filepath_func, filepath_mask1, filepath_mask2
+from analysis_spec import sub, roidata_save_dir, roi_1_name, roi_2_name, filepath_func, filepath_mask1, filepath_mask2
 
 
 # Implement the data loader.
@@ -19,9 +19,9 @@ class ROI_Dataset(object):
     def get_train(self, this_run=0, total_run=0):
         NULL = True # dataset is empty
         for run in it.chain(range(1,this_run), range(this_run+1,total_run+1)):
-                roi_save_dir_run = roi_save_dir+'roi_run_'+str(run)+'/'
-                roi_1_data_run = np.load(roi_save_dir_run+roi_1_name+'_data_run_'+str(run)+'.npy')
-                roi_2_data_run = np.load(roi_save_dir_run+roi_2_name+'_data_run_'+str(run)+'.npy')
+                roidata_save_dir_run = roidata_save_dir+'roi_run_'+str(run)+'/'
+                roi_1_data_run = np.load(roidata_save_dir_run+roi_1_name+'_data_run_'+str(run)+'.npy')
+                roi_2_data_run = np.load(roidata_save_dir_run+roi_2_name+'_data_run_'+str(run)+'.npy')
                
                 # Concatenate data from each run for training
                 if NULL:
@@ -36,9 +36,9 @@ class ROI_Dataset(object):
         self.ROIs_2 = np.float32(roi_2_data)
       
     def get_test(self, this_run=0, total_run=0): 
-        roi_save_dir_run = roi_save_dir+'roi_run_'+str(this_run)+'/'  
-        roi_1_data = np.load(roi_save_dir_run+roi_1_name+'_data_run_'+str(this_run)+'.npy')
-        roi_2_data = np.load(roi_save_dir_run+roi_2_name+'_data_run_'+str(this_run)+'.npy') 
+        roidata_save_dir_run = roidata_save_dir+'roi_run_'+str(this_run)+'/'  
+        roi_1_data = np.load(roidata_save_dir_run+roi_1_name+'_data_run_'+str(this_run)+'.npy')
+        roi_2_data = np.load(roidata_save_dir_run+roi_2_name+'_data_run_'+str(this_run)+'.npy') 
   
         self.ROIs_1 = np.float32(roi_1_data)
         self.ROIs_2 = np.float32(roi_2_data)

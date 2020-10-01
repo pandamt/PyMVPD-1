@@ -7,15 +7,15 @@ from dataloader.loader_regression import ROI_Dataset
 from func_regression.L2_LR import L2_LR
 from evaluation import var_expl
 from viz import viz_map
-from model_settings import mode, sub, total_run, alpha, filepath_func, filepath_mask1, filepath_mask2, model_save_dir
+from analysis_spec import model_type, sub, total_run, alpha, filepath_func, filepath_mask1, filepath_mask2, results_save_dir
 
 sys.argv = [sys.argv[0], sys.argv[1]]
 this_run = int(sys.argv[1])
 print("this_run:", this_run)
 
 # create output folder if not exists
-if not os.path.exists(model_save_dir):
-       os.mkdir(model_save_dir)
+if not os.path.exists(results_save_dir):
+       os.mkdir(results_save_dir)
 
 if __name__ == "__main__":
     # Load functioanl data and ROI masks
@@ -37,9 +37,9 @@ if __name__ == "__main__":
     var_expl = var_expl.eval_var_expl(err_LR, ROI_2_test)
     print("max_vari:", max(var_expl)) 
     # save variance to file 
-    np.save(model_save_dir+sub+'_var_expl_'+mode+'_testrun'+str(this_run)+'.npy', var_expl)
+    np.save(results_save_dir+sub+'_var_expl_'+model_type+'_testrun'+str(this_run)+'.npy', var_expl)
 
     # Visualization
     var_expl_map, var_expl_img = viz_map.cmetric_to_map(filepath_mask2, var_expl)
-    np.save(model_save_dir+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'.npy', var_expl_map)
-    nib.save(var_expl_img, model_save_dir+sub+'_var_expl_map_'+mode+'_testrun'+str(this_run)+'.nii.gz')
+    np.save(results_save_dir+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'.npy', var_expl_map)
+    nib.save(var_expl_img, results_save_dir+sub+'_var_expl_map_'+model_type+'_testrun'+str(this_run)+'.nii.gz')
