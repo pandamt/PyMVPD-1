@@ -25,7 +25,7 @@ Data of one subject from the [_StudyForrest_](http://studyforrest.org) dataset: 
 1. Choose one MVPD model, set model parameters, input functional data and ROI masks, set output directory in [analysis_spec.py](mvpd/analysis_spec.py);
 2. Run [data_loading.py](mvpd/data_loading.py) to preprocess functional data;
 ```
-python3 data_prep.py
+python3 data_loading.py
 ```
 3. Run MVPD model: 
 ```
