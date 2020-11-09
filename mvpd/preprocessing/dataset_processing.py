@@ -20,9 +20,13 @@ def apply_mask(filepath_func, filepath_mask1, filepath_mask2):
     mask2_values = mask2.get_fdata()
     mask1_values = np.expand_dims(mask1_values, axis=3)
     mask2_values = np.expand_dims(mask2_values, axis=3)
+    
+    mask1_values[mask1_values == 0] = np.nan
+    mask2_values[mask2_values == 0] = np.nan
+    
     func_mask1 = func_values * mask1_values # func data in mask 1
     func_mask2 = func_values * mask2_values # func data in mask 2
-
+    
     return func_mask1, func_mask2
 
 
@@ -31,10 +35,10 @@ def roi_array(func_mask):
     Convert functional data masked in ROIs to TxN arrays.
     """
     T = np.shape(func_mask)[3] # number of timepoints in func_mask
-    func_idx = np.nonzero(func_mask) # index of non-zero voxels in mask
-    N = int(np.shape(func_idx)[1]/T) # number of non-zero voxels in mask
+    func_idx = np.nonzero(~np.isnan(func_mask)) # index of non-nan voxels in mask
+    N = int(np.shape(func_idx)[1]/T) # number of non-nan voxels in mask
     func_array = np.zeros([T, N])
-
+    
     for i in range(T*N):
         x = func_idx[0][i]
         y = func_idx[1][i]
