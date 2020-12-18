@@ -9,8 +9,8 @@ PyMVPD: MultiVariate Pattern Dependence in Python
 
 2. Neural Network Models
 * NN_1layer: 1-layer fully-connected linear neural network model
-* NN_5layer: 5-Layer fully-connected linear neural network model
-* NN_5layer_dense: 5-Layer fully-connected linear neural network model with dense connections
+* NN_5layer: 5-layer fully-connected linear neural network model
+* NN_5layer_dense: 5-layer fully-connected linear neural network model with dense connections
 
 ## Workflow
 <img src="/PyMVPD_workflow.png" width="750"/>
